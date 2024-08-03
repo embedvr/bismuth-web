@@ -1,38 +1,20 @@
-# create-svelte
+# Bismuth Web
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is the repository for the web dashboard for the [Bismuth Minecraft plugin](https://github.com/embedvr/bismuth).
 
-## Creating a project
+## How to use
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Bismuth Web is built to run on Cloudflare Pages with a D1 database.
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/embedvr/bismuth-web.git
+cd bismuth-web
+# edit the D1 bindings to your own,
+# you can create your own with the following command
+# pnpx wrangler d1 create [name]
+nano wrangler.toml
+pnpm run deploy
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+**Attention!** You will need to provide the environment variables listed inside the `.env.example` file to Cloudflare. You can do this either via the Cloudflare Dashboard or via `pnpx wrangler secret put [key]`.
+**Double Attention!** For Bismuth to sucessfully talk to your web dashboard, you'll need HTTPS enabled on both the web dashboard and the Bismuth Minecraft API.
